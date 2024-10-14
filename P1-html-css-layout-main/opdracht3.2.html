@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boekingsformulier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Boekingsformulier</h1>
+    <form id="bookingForm">
+        <label for="firstName">Voornaam:</label>
+        <input type="text" id="firstName" name="firstName" required pattern="[A-Za-z]+" title="Voer alleen letters in.">
+
+        <label for="lastName">Achternaam:</label>
+        <input type="text" id="lastName" name="lastName" required pattern="[A-Za-z]+" title="Voer alleen letters in.">
+
+        <label>Geslacht:</label>
+        <input type="radio" id="male" name="gender" value="man" checked>
+        <label for="male">Man</label>
+        <input type="radio" id="female" name="gender" value="vrouw">
+        <label for="female">Vrouw</label>
+
+        <label for="street">Straat met huisnummer:</label>
+        <input type="text" id="street" name="street" required>
+
+        <label for="postalCode">Postcode:</label>
+        <input type="text" id="postalCode" name="postalCode" required pattern="\d{4}\s?[A-Z]{2}" title="Voer een geldige postcode in (bijv. 1234 AB).">
+
+        <label for="city">Stad:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="country">Land:</label>
+        <select id="country" name="country" required>
+            <option value="">Selecteer een land</option>
+            <option value="nederland">Nederland</option>
+            <option value="belgie">België</option>
+            <option value="duitsland">Duitsland</option>
+            <option value="frankrijk">Frankrijk</option>
+            <option value="spanje">Spanje</option>
+            <option value="italie">Italië</option>
+        </select>
+
+        <label for="bsn">BSN-nummer:</label>
+        <input type="text" id="bsn" name="bsn" required pattern="\d{9}" title="Voer een geldig BSN-nummer in (9 cijfers).">
+
+        <label for="departureCountry">Vakantieland:</label>
+        <select id="departureCountry" name="departureCountry" required>
+            <option value="">Selecteer een vakantieland</option>
+            <option value="nederland">Nederland</option>
+            <option value="belgie">België</option>
+            <option value="duitsland">Duitsland</option>
+            <option value="frankrijk">Frankrijk</option>
+            <option value="spanje">Spanje</option>
+            <option value="italie">Italië</option>
+        </select>
+
+        <label for="departureDate">Datum van vertrek:</label>
+        <input type="date" id="departureDate" name="departureDate" required min="" onchange="setMinReturnDate()">
+
+        <label for="returnDate">Datum van terugkomst:</label>
+        <input type="date" id="returnDate" name="returnDate" required>
+
+        <label for="travelers">Aantal reisgenoten (max 4):</label>
+        <input type="number" id="travelers" name="travelers" required min="0" max="4">
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Wachtwoord:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Boek nu</button>
+    </form>
+
+    <script>
+        function setMinReturnDate() {
+            const departureDate = document.getElementById('departureDate').value;
+            document.getElementById('returnDate').setAttribute('min', departureDate);
+        }
+
+        // Voorkomen van het verzenden van het formulier met ongeldige data
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            const departureDate = new Date(document.getElementById('departureDate').value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Stel tijd op middernacht in
+            if (departureDate < today) {
+                alert('Datum van vertrek mag niet in het verleden zijn.');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
