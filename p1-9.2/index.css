@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .emoji {
+    font-size: 100px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .emoji.active {
+    display: block;
+  }
+  
