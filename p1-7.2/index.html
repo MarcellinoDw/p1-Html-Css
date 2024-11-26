@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Kopen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: #007BFF;
+    }
+    p {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kan je dit product kopen?</h1>
+    <p>Voer het bedrag in dat je beschikbaar hebt, en kijk of je genoeg geld hebt om een product van €50 te kopen.</p>
+    <button onclick="checkGeld()">Controleer</button>
+    <footer>Gemaakt door [Marcellino]</footer>
+  </div>
+
+  <script>
+    function checkGeld() {
+      // Prijs van het product (hard gecodeerd)
+      const prijsProduct = 50;
+
+      // Vraag aan de gebruiker hoeveel geld hij/zij heeft
+      const gebruikerGeld = prompt("Hoeveel geld heb je?");
+
+      // Controleer of het genoeg is
+      if (gebruikerGeld >= prijsProduct) {
+        alert("Je hebt genoeg geld om het product te kopen!");
+      } else {
+        alert("Helaas, je hebt niet genoeg geld om dit product te kopen.");
+      }
+    }
+  </script>
+</body>
+</html>
